@@ -1,0 +1,61 @@
+# .dockerignore - controls what files get sent to the Docker daemon as the
+# build context when you run "docker build". Files/patterns listed here are
+# excluded from that context (not sent, not usable by COPY/ADD).
+
+# Note: Dockerfile is listed below even though it's always read directly
+# from disk by the Docker client to determine build steps - it doesn't
+# need to be in the context for the build to work. We exclude it here just
+# so it never gets copied into the image accidentally (e.g. if a future
+# COPY . . step is added).
+
+# NOTE: "goserver" is intentionally NOT listed here.
+# Your Dockerfile does `COPY goserver /bin/goserver`, so it must remain
+# available in the build context, even though it's gitignored separately.
+
+# --- Version Control ---
+# Git metadata - large, and never needed inside the image
+.git
+
+# --- OS / Filesystem Metadata ---
+# macOS folder view preferences
+.DS_Store
+# Windows thumbnail cache
+Thumbs.db
+# Windows folder display settings
+desktop.ini
+
+# --- IDEs & Editors ---
+# Personal VS Code settings - local to your machine, not the build
+.vscode/
+# JetBrains (GoLand) project settings
+.idea/
+# Vim/Unix swap files
+*.swp
+*.swo
+
+# --- Local Environment Secrets ---
+# DANGER: never send credentials into the build context
+.env
+.env.*
+# Private keys and certificates
+*.pem
+
+# --- Logs & Runtime Artifacts ---
+# Local logs and crash dumps - irrelevant to the running app
+*.log
+*.crash
+
+# --- Go Testing & Performance Profiles ---
+# Not needed inside the image - only relevant during local development
+*.out
+*.coverprofile
+*.pprof
+
+# --- Documentation ---
+# Not needed for the app to run
+*.md
+
+# --- Docker Meta Files ---
+# The Dockerfile and this file don't need to be copied into the image
+Dockerfile
+.dockerignore
