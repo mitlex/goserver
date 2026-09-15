@@ -57,5 +57,16 @@ desktop.ini
 
 # --- Docker Meta Files ---
 # The Dockerfile and this file don't need to be copied into the image
-Dockerfile
+Dockerfile*
 .dockerignore
+
+# --- Python Artifacts ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# --- Python Virtual Environments ---
+.venv/
+venv/
+ENV/
