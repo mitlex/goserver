@@ -61,7 +61,7 @@ Docker isolates applications into lightweight containers sharing the host kernel
 |---|---|
 | Docker Engine | Container runtime and process isolation |
 | Dockerfile | Declarative recipes for building container images |
-| Docker Hub | Container registry and image distribution |
+| Docker Hub | Image registry and distribution |
 | Linux / CLI | Shell execution, process signals, and network inspection |
 | Git | Version control |
 
